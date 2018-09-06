@@ -60,7 +60,7 @@ public class SocketClient {
         ch = b.connect(host, port).sync().channel();
         SEND_SWITCH = true;
         //发起注册
-        eval(new RequestCommand(RequestCommandEnum.注册));
+        //eval(new RequestCommand(RequestCommandEnum.注册));
 
     }
 

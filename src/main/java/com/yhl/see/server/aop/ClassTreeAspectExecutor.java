@@ -7,12 +7,12 @@ import javassist.NotFoundException;
 /**
  * Created by yanghailong on 2018/9/4.
  */
-public class EnhancerAspectExecutor extends AspectExecutor {
+public class ClassTreeAspectExecutor extends AspectExecutor {
 
     @Override
     public void execute(RequestCommand command) {
         try {
-            //TODO 执行逻辑
+            //TODO 执行逻辑z
             CtClass clazz = CLASS_POOL.getCtClass(command.getClassName());
             clazz.getDeclaredMethod(command.getMethodName());
         } catch (NotFoundException e) {

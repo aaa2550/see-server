@@ -9,12 +9,8 @@ import javassist.NotFoundException;
  */
 public class TimeAspectExecutor extends AspectExecutor {
 
-    public TimeAspectExecutor(RequestCommand command) {
-        super(command);
-    }
-
     @Override
-    public void execute() {
+    public void execute(RequestCommand command) {
         try {
             //TODO 执行逻辑
             CtClass clazz = CLASS_POOL.getCtClass(command.getClassName());

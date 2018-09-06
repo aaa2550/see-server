@@ -8,12 +8,12 @@ import lombok.Data;
 @Data
 public class RequestCommand {
 
-    private RequestCommandEnum commandType;
+    private int type;
     private String className;
     private String methodName;
 
-    public RequestCommand(RequestCommandEnum commandType) {
-        this.commandType = commandType;
+    public RequestCommand(int type) {
+        this.type = type;
     }
 
 }

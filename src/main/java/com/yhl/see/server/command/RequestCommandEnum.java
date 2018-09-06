@@ -13,8 +13,9 @@ public enum RequestCommandEnum {
     注册(1),
     日志(2),
     计数器(3),
-    代码增强(4);
+    代码增强(4),
+    查询类树(5);
 
-    int type;
+    private int type;
 
 }
