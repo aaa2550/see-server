@@ -1,7 +1,6 @@
 package com.yhl.see.server.socket;
 
-import com.yhl.see.server.command.RequestCommand;
-import com.yhl.see.server.command.RequestCommandEnum;
+import com.yhl.see.server.command.RemoteCommand;
 import com.yhl.see.server.seriallizer.NettySerializationUtils;
 import io.netty.bootstrap.Bootstrap;
 import io.netty.channel.Channel;
@@ -45,8 +44,7 @@ public class SocketClient {
 
     private void open() throws InterruptedException {
         Bootstrap b = new Bootstrap();
-        b.group(group)
-                .channel(NioSocketChannel.class)
+        b.group(group).channel(NioSocketChannel.class)
                 .handler(new ChannelInitializer<SocketChannel>() {
                     @Override
                     public void initChannel(SocketChannel ch) {
@@ -54,6 +52,7 @@ public class SocketClient {
                         pipeline.addLast("http-codec", new HttpClientCodec());
                         pipeline.addLast("aggregator", new HttpObjectAggregator(65536));
                         pipeline.addLast(new IdleStateHandler(0,0,25, TimeUnit.SECONDS));
+                        pipeline.addLast(new ServerHandler());
                     }
                 });
 
@@ -71,7 +70,7 @@ public class SocketClient {
         group.shutdownGracefully();
     }
 
-    public void eval(RequestCommand command) {
+    public void eval(RemoteCommand command) {
         if (SEND_SWITCH) {
             if (ch != null && ch.isOpen()) {
                 byte[] body = NettySerializationUtils.serializer.serialize(command);

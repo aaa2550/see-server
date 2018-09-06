@@ -1,6 +1,6 @@
 package com.yhl.see.server.aop;
 
-import com.yhl.see.server.command.RequestCommand;
+import com.yhl.see.server.command.RemoteCommand;
 import com.yhl.see.server.exception.InvalidRequestTypeException;
 
 /**
@@ -14,7 +14,7 @@ public class AspectExecutorFactory {
     public static final int ENHANCER_ACTION_CODE = 3;
     public static final int CLASS_TREE_ACTION_CODE = 4;
 
-    public AspectExecutor create(RequestCommand command) {
+    public static AspectExecutor create(RemoteCommand command) {
         switch (command.getType()) {
             case 1:
                 return new LogAspectExecutor();

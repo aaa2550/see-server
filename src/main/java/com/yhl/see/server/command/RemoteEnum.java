@@ -8,7 +8,7 @@ import lombok.Getter;
  */
 @AllArgsConstructor
 @Getter
-public enum RequestCommandEnum {
+public enum RemoteEnum {
 
     注册(1),
     日志(2),

@@ -1,9 +1,6 @@
-package com.yhl.see.server.common;
+package com.yhl.see.server.files;
 
-import lombok.AllArgsConstructor;
 import lombok.Data;
-
-import java.lang.reflect.Field;
 
 /**
  * Created by yanghailong on 2018/9/6.

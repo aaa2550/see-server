@@ -1,7 +1,7 @@
 package com.yhl.see.server.aop;
 
-import com.yhl.see.server.command.RequestCommand;
-import javassist.ClassPool;
+import com.yhl.see.server.command.RemoteCommand;
+import io.netty.channel.ChannelHandlerContext;
 import javassist.CtClass;
 import javassist.NotFoundException;
 
@@ -11,7 +11,7 @@ import javassist.NotFoundException;
 public class LogAspectExecutor extends AspectExecutor {
 
     @Override
-    public void execute(RequestCommand command) {
+    public void execute(ChannelHandlerContext ctx, RemoteCommand command) {
         try {
             //TODO 执行逻辑
             CtClass clazz = CLASS_POOL.getCtClass(command.getClassName());

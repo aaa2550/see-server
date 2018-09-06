@@ -1,6 +1,6 @@
 package com.yhl.see.server.socket;
 
-import com.yhl.see.server.command.RequestCommand;
+import com.yhl.see.server.command.RemoteCommand;
 import com.yhl.see.server.seriallizer.NettySerializationUtils;
 import io.netty.buffer.ByteBuf;
 import io.netty.channel.ChannelHandlerContext;
@@ -38,7 +38,7 @@ public class ServerDecoderHandler extends LengthFieldBasedFrameDecoder {
         int bodyLength = frame.readInt();
         byte[] body = new byte[bodyLength];
         frame.readBytes(body);
-        return NettySerializationUtils.serializer.deserialize(body, RequestCommand.class);
+        return NettySerializationUtils.serializer.deserialize(body, RemoteCommand.class);
     }
 
 }
